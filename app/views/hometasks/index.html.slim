@@ -1,0 +1,34 @@
+.uk-card.uk-card-primary.faq-header
+  .container
+    h1.uk-card-title = text('hometask', 'title')
+.home
+  .container
+    - unless current_user.courses.empty?
+      - current_user.courses.each do |faq_category|
+        h3.faq-category__title.uk-card-title = faq_category.title
+        ul.faq-list[uk-accordion]
+          - faq_category.lessons.each do |lesson|
+            - @class = 'red'
+            - @class = 'green' if current_user.hometasks.find_by(lesson_id: lesson.id)
+            .hometask-card.uk-card.uk-card-default.uk-card-body class=@class
+              a class="uk-card-title uk-accordion-title faq-title" href="#" = lesson.title
+              - if @task = current_user.hometasks.find_by(lesson_id: lesson.id)
+                - if @task.rate
+                  span.rate
+                    = @task.rate.to_s
+                    = fa_icon('star')
+                .uk-accordion-content
+                  a href=@task.file.url = @task.file.path.split("/").last
+                  - if @task.comment and @task.comment.length > 2
+                    p.faq__answer = @task.comment
+                  - elsif @task.comment.nil? and @task.rate.nil?
+                    br
+                    a href=hometask_path(lesson) = text('hometask', 'resend')
+              - else
+                a href=hometask_path(lesson) = text('hometask', 'not_given')
+          - if faq_category.lessons.empty?
+            .empty
+              span.empty = text('common', 'empty')
+    - else
+      .empty
+        span.empty = text('common', 'empty')

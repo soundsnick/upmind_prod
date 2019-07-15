@@ -1,0 +1,81 @@
+// Place all the styles related to the News controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.news{
+  &-grid{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+    grid-gap: 30px;
+  }
+}
+.new{
+  border-radius: 10px;
+  overflow: hidden;
+  opacity: 1;
+  box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  background: #fff;
+  transition: box-shadow 0.2s;
+  cursor: pointer;
+  &__info{
+    padding: 20px;
+  }
+  &__title{
+    margin-bottom: 5px;
+  }
+  &__description{
+    font-size: 14px;
+    font-weight: 200;
+    margin-top: 0;
+  }
+  &__image--wrapper{
+    flex: 0 0 25%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 0 128% 40% 0;
+    box-shadow: inset -5px 1px 0px;
+    transition: border-radius 0.2s, box-shadow 0.2s;
+  }
+  &:hover .new__image--wrapper{
+    border-radius: 0 10px 10px 0;
+    box-shadow: none!important;
+  }
+}
+.article{
+  &-page{
+    background: #fff;
+    padding: 50px 0;
+  }
+  &__image{
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+  }
+  &__paragraph{
+    background: none;
+    border: 0;
+    overflow: auto;
+    white-space: pre-wrap;
+    font-family: inherit;
+    line-height: 1.5;
+    padding: 0;
+    word-break: break-word;
+    font-size: 16px;
+    font-weight: 200;
+    color: #000;
+  }
+  .uk-text-lead{
+    font-size: 21px;
+    font-weight: 300;
+    line-height: 1.4;
+    margin-bottom: 0;
+  }
+  .uk-article-meta{
+    font-weight: 100;
+    color: grey;
+    font-size: 14px;
+    margin: 0;
+  }
+  .uk-article-title{
+    margin-bottom: 8px;
+  }
+}

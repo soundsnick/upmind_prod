@@ -1,0 +1,142 @@
+@import "variables";
+
+html{
+  font-family: "Gotham Pro", Roboto, Sans-Serif, serif;
+}
+body{
+  margin: 0;
+  padding: 0;
+  background: #f5f5f5;
+  background: $background-grey;
+}
+.burger.uk-navbar-toggle{
+  display: none;
+}
+.container{
+  position: relative;
+  max-width: 1000px;
+  margin: auto;
+  &-mini{
+    position: relative;
+    max-width: 300px;
+    margin: auto;
+  }
+  &-small{
+    position: relative;
+    max-width: 700px;
+    margin: auto;
+  }
+}
+.authorisation-form{
+  text-align: center;
+}
+html input.uk-input, html select.uk-select{
+  font-weight: 200;
+}
+.header{
+  background: #fff;
+  padding: 10px 0;
+}
+.logo{
+  margin: 0;
+  font-size: 20px;
+  color: #000;
+  a{
+    color: inherit;
+    &:hover{
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+}
+
+.sign-links{
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 200;
+}
+application{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.yield{
+  flex: 1;
+}
+.footer{
+  border-top: 1px solid #f1f1f1;
+  background: #f9f9f9;
+  padding: 10px 0;
+  .logo{
+    font-size: 14px;
+    font-weight: 200;
+    b{
+      font-weight: 300;
+    }
+  }
+}
+.copyright{
+  font-size: 13px;
+  font-weight: 200;
+  color: #383838;
+}
+.global-notice, .global-alert{
+  padding: 15px 0;
+  padding-bottom: 0;
+  font-size: 12px;
+  font-weight: 200;
+  text-align: center;
+}
+.nav{
+  &__item{
+    font-size: 14px;
+    margin: 0 10px;
+    font-weight: 200;
+    &.account{
+      color: #282828;
+      cursor: pointer;
+      &:hover::after{
+        width: 20%;
+      }
+      &::after{
+        content: '';
+        display: block;
+        height: 3px;
+        background: #2196F3;
+        border-radius: 15px 15px 0 0;
+        position: absolute;
+        width: 0%;
+        bottom: -13px;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: width 0.2s;
+        will-change: width;
+      }
+      &:hover{
+        text-decoration: none;
+        color: #282828;
+      }
+    }
+  }
+}
+.header__navigation{
+  text-align: right;
+}
+.account__item{
+  padding: 3px 0;
+  display: block;
+  text-align: center;
+  font-size: 14px;
+  &s{
+    margin-bottom: 10px;
+  }
+}
+.uk-button-danger.circled{
+  font-weight: 300;
+  text-transform: capitalize;
+  font-size: 14px!important;
+}
+.empty{
+  font-size: 14px;
+  font-weight: 200;
+}

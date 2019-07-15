@@ -1,0 +1,9 @@
+.home
+  .container
+    h1.uk-card-title = text('courses', 'courses_all')
+    - unless @courses.empty?
+      .courses-grid
+        = render 'layouts/courses'
+    - else
+      .empty
+        span.empty = text('common', 'empty')

@@ -1,0 +1,53 @@
+.landing
+  .landing-header
+    .container
+      .uk-flex
+        .uk-flex-1
+          h1.landing-title = text('landing', 'title')
+          p.landing-description = text('landing', 'description')
+          a.circled.uk-button.uk-button-primary href=new_user_registration_path = text('signin', 'signin_register_link')
+        .uk-flex-1
+  .landing-content
+    .landing-courses
+      .container
+        h1.uk-card-title.landing-subtitle = text('landing', 'courses')
+        - @courses.each do |course|
+          .landing-course.uk-flex
+            .landing-course__image style="background-image: url(#{course.image.url})"
+            .landing-course__info
+              h4.landing-course__title = course.title
+              p.landing-course__paragraph = course.description
+              a.uk-button.uk-button-primary.circled href=course_path(course) = text('landing', 'more')
+css:
+  .header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 25px 0;
+    z-index: 9999;
+    background: transparent;
+    transition: background 0.2s, padding 0.2s;
+  }
+  .header.active{
+    background: #fff;
+    padding: 15px 0;
+    box-shadow: 0 11px 8px -9px rgba(0,0,0,.05);
+  }
+  .container{
+    position: relative;
+    max-width: 1170px;
+    margin: auto;
+  }
+  body{
+    background: #f7f7f7;
+  }
+javascript:
+  $(window).scroll(function(){
+    if($(window).scrollTop() > 10){
+      $('.header').addClass('active');
+    }
+    else{
+      $('.header').removeClass('active');
+    }
+  })

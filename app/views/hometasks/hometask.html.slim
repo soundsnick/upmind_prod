@@ -1,0 +1,11 @@
+.container
+  .container-mini
+    = form_for(@task, html: { method: :put, class: 'uk-form-stacked auth', multipart: :true}) do |f|
+      h2.auth-header = text('hometask', 'title') + " (#{@lesson.title})"
+      = f.hidden_field :lesson_id, value: @lesson.id
+      .uk-width-1[uk-form-custom]
+        div.uk-width-1 uk-form-custom="target: true"
+          = f.file_field :file, class: 'uk-width-1'
+          input class="uk-input uk-width-1" type="text" placeholder=text('hometask', 'send_button')
+      .uk-margin
+        = f.submit text('account', 'account_button'), class: 'uk-button uk-button-primary uk-width-1'

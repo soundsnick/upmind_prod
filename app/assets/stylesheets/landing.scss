@@ -1,0 +1,44 @@
+.landing {
+  &-header{
+    padding: 150px 0;
+    background-image: image-url('landing.jpg');
+    background-size: cover;
+  }
+  &-description{
+    font-weight: 200;
+  }
+  &-subtitle{
+    font-size: 32px!important;
+    text-align: center;
+    padding-bottom: 30px;
+  }
+  &-content{
+    padding: 70px 0;
+  }
+  &-course{
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 45px;
+    &__image{
+      flex: 0 0 20%;
+      background-size: cover;
+      background-position: center;
+    }
+    &__info{
+      background: #fff;
+      padding: 55px;
+      flex: 1;
+    }
+    &__title{
+      margin: 0;
+      font-size: 26px;
+    }
+    &__paragraph{
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: 100;
+      color: #282828;
+    }
+  }
+}
+

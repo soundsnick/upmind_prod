@@ -1,0 +1,69 @@
+doctype html
+html
+  head
+    title = "#{@title+" | " if @title}Upmind"
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    meta name="viewport" content="width=device-width, initial-scale=1"
+  body
+    application
+      header.header
+        .container
+          .uk-flex.uk-flex-middle
+            .logo-wrapper
+              h1.logo
+                a href=root_path = "Upmind"
+            nav class="uk-navbar uk-navbar-container uk-margin"
+              div class="uk-navbar-left"
+                a[class="uk-navbar-toggle burger" uk-navbar-toggle-icon href="#"]
+            nav.header__navigation.uk-flex-1
+              a.nav__item href=courses_path = text('header', 'courses')
+              a.nav__item href=news_path = text('header', 'news')
+              - if user_signed_in?
+                a.nav__item href=hometasks_path = text('header', 'hometasks')
+              a.nav__item href=faq_path = text('header', 'faq')
+              a.nav__item href=rules_path = text('header', 'rules')
+              - if current_user.try(:admin?)
+                a.nav__item href=rails_admin_path = "Администрация"
+              .sign-links
+                - if user_signed_in?
+                  .uk-inline
+                    a.nav__item.account href="#" = current_user.name_surname
+                    div uk-dropdown="mode: click"
+                      div[uk-lightbox]
+                        a.profile__avatar href=avatar style="background-image: url(#{avatar})"
+                      .account__items
+                        a.account__item href=edit_user_registration_path = "Аккаунт"
+                      = link_to text('header', 'logout'), destroy_user_session_path, :method => :delete, class: 'uk-button uk-button-danger circled uk-width-1 uk-form-small'
+                - else
+                  = link_to text('header', 'login'), new_user_session_path, class: 'nav__item'
+              - not_set_languages.each do |lang|
+                a.nav__item href=language_path(lang.abbr) = lang.title
+      main.yield
+        - if notice
+          .notice.global-notice
+            .container
+              .uk-alert-primary.animated.fadeIn[uk-alert]
+                = notice
+        - if alert
+          .alert.global-alert
+            .container
+              .uk-alert-warning.animated.fadeIn[uk-alert]
+                = alert
+        = yield
+      .footer
+        .container
+          .uk-flex.uk-flex-middle
+            .footer-logo--wrapper.uk-flex-1
+              h6.logo = "<b>&copy; 2019 Upmind.</b> #{text('footer', 'copyright')}".html_safe
+            .copyright--wrapper
+              span.copyright
+                = "copyright by "
+                a href="https://askarovich.kz" = "Askarovich Studio"
+  javascript:
+    $('.burger').click(function(e) {
+        e.preventDefault();
+        $('.header__navigation').slideToggle();
+    })

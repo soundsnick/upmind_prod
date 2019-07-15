@@ -1,0 +1,44 @@
+.lesson
+  .container
+    .uk-card.lesson__header.uk-card-body.uk-card-default
+      h2.uk-card-title = @lesson.title
+    video.lesson__player[id="player" src=@lesson.video.url+"#t=2" playsinline controls data-plyr-provider="youtube"]
+    .uk-card.uk-card-body.uk-card-default
+      .fr-view = @lesson.content.html_safe
+    .uk-margin
+      .uk-card.uk-card-body.uk-card-primary
+        .uk-flex-center.uk-flex
+          - if @task = current_user.hometasks.find_by(lesson_id: @lesson.id)
+            a href=hometask_path(@lesson) = text('hometask', 'task_view')
+          - else
+            a href=hometask_path(@lesson) = text('hometask', 'task_send')
+    h2.uk-article-title style="font-size: 23px;" = "Комментарий #{"(#{@lesson.comments.count})" if @lesson.comments.count > 0}"
+    .uk-card.uk-card-body.uk-card-secondary
+      = form_for(Comment.new, html: {class: 'uk-form-stacked auth'}) do |f|
+        h2.uk-card-title style="margin-top: 0;" = text('comment', 'comment_title')
+        .uk-margin
+          = f.hidden_field :lesson_id, value: @lesson.id
+          = f.label :text, class: 'uk-form-label um-form-label'
+            = text('comment', 'comment_text')
+          .uk-flex
+            = f.text_field :text, autofocus: true, class: 'uk-input', placeholder: text('comment', 'comment_text')
+            = f.submit text('comment', 'comment_button'), class: 'uk-button uk-button-primary'
+    - unless @lesson.comments.empty?
+      - @lesson.comments.each do |comment|
+        .uk-margin
+          article class="uk-comment uk-comment-default uk-card uk-card-body uk-card-default"
+            header[class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid]
+              div class="uk-width-auto"
+                div[uk-lightbox]
+                  a.profile__avatar.uk-comment-avatar.comment-avatar href=comment.user.avatar.url style="background-image: url(#{comment.user.avatar.url}); border: none"
+              .uk-width-expand.no-padding
+                h4.uk-comment-title.uk-margin-remove
+                  a.uk-link-reset.comment-name href="#" = comment.user.name_surname
+                ul.uk-comment-meta.uk-subnav.uk-subnav-divider.uk-margin-remove-top
+                  li
+                    a.published href="#" = comment.created_at.in_time_zone("Almaty").strftime("%d.%m.%Y %H:%M")
+            .uk-comment-body
+              p = comment.text
+    - else
+      .empty
+        span.empty = text('common', 'empty')

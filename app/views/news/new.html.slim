@@ -1,0 +1,8 @@
+.article__image style="background-image: linear-gradient(120deg, transparent, #{@new.image_dominant_color}), url(#{@new.image.url})"
+.article-page
+  .container
+    article.uk-article.article
+      h1.uk-article-title = @new.title
+      p.uk-article-meta = "Опубликовано #{@new.created_at.strftime("%d.%M.%Y")}"
+      p.uk-text-lead = @new.description
+      pre.article__paragraph = @new.content

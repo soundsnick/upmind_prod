@@ -1,0 +1,30 @@
+.container
+  .container-mini
+    = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'uk-form-stacked auth'}) do |f|
+      h2.auth-header = text('signin', 'signin_title')
+      - if alert
+        .auth-alert.uk-alert-danger.animated.bounce[uk-alert]
+          span = alert
+      .uk-margin
+        = f.label :email, class: 'uk-form-label um-form-label'
+          = text('signin', 'signin_email')
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: 'uk-input uk-form-small'
+      .uk-margin
+        = f.label :password, class: 'uk-form-label um-form-label'
+          = text('signin', 'signin_password')
+        = f.password_field :password, autocomplete: "current-password", class: 'uk-input uk-form-small'
+
+      - if devise_mapping.rememberable?
+        .uk-margin.uk-flex.uk-flex-middle
+          = f.check_box :remember_me, class: 'uk-checkbox', style: 'margin-right: 10px'
+          = f.label :remember_me, class: 'um-form-label'
+            = text('signin', 'signin_remember')
+
+      .actions
+        = f.submit text('signin', 'signin_button'), class: 'uk-button uk-button-primary uk-width-1 circled'
+      .auth-links
+        = render "devise/shared/links"
+css:
+  .global-alert{
+    display: none;
+  }

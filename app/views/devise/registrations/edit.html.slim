@@ -1,0 +1,61 @@
+.container
+  .container-mini
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'uk-form-stacked auth', multipart: :true}) do |f|
+      h2.auth-header = text('account', 'account_title') + " (№#{current_user.id})"
+      = render "devise/shared/error_messages", resource: resource
+      div.uk-width-1[uk-form-custom]
+        #avatar.profile__avatar style="background-image: url(#{avatar})"
+        label.uk-flex.uk-flex-center
+          button.uk-button.uk-button-primary.uk-width-1 type="button" = text('account', 'account_avatar')
+          = f.file_field :avatar, id: 'imgInp'
+      .uk-margin
+        = f.label :name_surname, class: 'uk-form-label um-form-label'
+          = text('signup', 'signup_name')
+        = f.text_field :name_surname, autofocus: true, autocomplete: "name_surname", class: 'uk-input uk-form-small'
+      .uk-margin
+        = f.label :phone, class: 'uk-form-label um-form-label'
+          = text('signup', 'signup_phone')
+        = f.phone_field :phone, autocomplete: "phone", class: 'uk-input uk-form-small'
+      .uk-margin
+        = f.label :email, class: 'uk-form-label um-form-label'
+          = text('signup', 'signup_email')
+        = f.email_field :email, autocomplete: "email", class: 'uk-input uk-form-small'
+      .uk-margin
+        = f.label :gender, class: 'uk-form-label um-form-label'
+          = text('signup', 'signup_gender')
+        select.uk-select.uk-form-small name="user[gender]"
+          option value=1 = "Мужской"
+          - if current_user.gender == 2
+            option value=2 selected="" = "Женский"
+          - else
+            option value=2 = "Женский"
+      .uk-margin
+        = f.label :birthday, class: 'uk-form-label um-form-label'
+          = text('signup', 'signup_birthday')
+        = f.date_field :birthday, class: 'uk-input uk-form-small'
+      .uk-margin
+        = f.label :password, class: 'uk-form-label um-form-label'
+          = text('signup', 'signup_password')
+        = f.password_field :password, autocomplete: "new-password", class: 'uk-input uk-form-small', placeholder: "#{text('signup', 'signup_password_new')} (минимум #{@minimum_password_length} символов)"
+      .uk-margin
+        = f.password_field :password_confirmation, autocomplete: "new-password", class: 'uk-input uk-form-small', placeholder: text('signup', 'signup_password_confirm')
+      .uk-margin
+        = f.password_field :current_password, autocomplete: "none", class: 'uk-input uk-form-small', placeholder: text('account', 'account_password_current')
+      .actions
+        = f.submit text('account', 'account_button'), class: 'uk-button uk-button-primary uk-width-1 circled'
+javascript:
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#avatar').css('background-image', `url(${e.target.result})`);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imgInp").change(function () {
+        readURL(this);
+    });

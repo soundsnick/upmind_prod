@@ -1,0 +1,9 @@
+- @courses.each do |course|
+  .course data-id=course.id
+    .course__image--wrapper
+      img.course__image src=course.image.url
+      .after style="background: #{course.color}"
+    .course__info
+      h4.course__title
+        a href=course_path(course) = course.title
+      p.course__description = course.description

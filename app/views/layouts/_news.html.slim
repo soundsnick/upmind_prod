@@ -1,0 +1,7 @@
+- @news.each do |new|
+  .new.uk-flex data-id=new.id
+    .new__image--wrapper style="background-image: url(#{new.image.url}); color: #{new.image_dominant_color}"
+    .new__info
+      h4.new__title
+        a href=new_path(new) = new.title
+      p.new__description = new.description_short

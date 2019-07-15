@@ -1,0 +1,9 @@
+.home
+  .container
+    h1.uk-card-title = text('news', 'news_all')
+    - unless @news.empty?
+      .news-grid
+        = render 'layouts/news'
+    - else
+      .empty
+        span.empty = text('common', 'empty')

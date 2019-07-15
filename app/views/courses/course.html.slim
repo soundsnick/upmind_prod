@@ -1,0 +1,15 @@
+.uk-card.uk-card-primary.faq-header
+  .container
+    h1.uk-card-title = @course.title
+.faq
+  .container
+    - unless @course.lessons.empty?
+      - @course.lessons.each do |lesson|
+        .uk-card.uk-card-default.uk-card-body
+          a class="uk-card-title faq-title" href=lesson_path(lesson) = lesson.title
+      - if @course.lessons.empty?
+        .empty
+          span.empty = text('common', 'empty')
+    - else
+      .empty
+        span.empty = text('common', 'empty')
