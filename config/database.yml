@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: upmind_production
-  username: upmind
+  username: deploy
   password: 1-14-40ernazar
