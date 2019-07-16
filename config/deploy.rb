@@ -8,6 +8,7 @@ set :puma_workers,    0
 # Don't change these unless you know what you're doing
 set :pty,             true
 set :use_sudo,        false
+set :rvm_ruby_string, '2.6.3'
 set :stage,           :production
 set :deploy_via,      :remote_cache
 set :deploy_to,       "/home/#{fetch(:user)}/www/#{fetch(:application)}"
