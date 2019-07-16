@@ -20,6 +20,8 @@ gem 'carrierwave'
 gem 'pry'
 gem 'slim'
 gem 'font_awesome5_rails'
+gem "mini_magick"
+
 gem "carrierwave-color"
 gem 'devise'
 gem 'devise-i18n'
