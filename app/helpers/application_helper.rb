@@ -1,6 +1,6 @@
 module ApplicationHelper
   def get_language
-    cookies[:language] == nil ? Language.find_by(abbr: 'ru') : Language.find_by(abbr: cookies[:language])
+    cookies[:language] == nil ? Language.find_by(abbr: 'kk') : Language.find_by(abbr: cookies[:language])
   end
 
   def text(mod, label)
