@@ -66,7 +66,43 @@ html
               span.copyright
                 = "copyright by "
                 a href="https://askarovich.kz" = "Askarovich Studio"
+    .timer
+      span.timer__text data-ms=0 = "00:00:00.0"
+      button.timer__button = "Start/Stop"
   javascript:
+    function updateDisplay() {
+        let valuez = $(".timer__text").attr('data-ms');
+        valuez = parseInt(valuez)+100;
+        $(".timer__text").attr('data-ms', valuez);
+        $(".timer__text").html(defaultFormatMilliseconds(valuez));
+    };
+    timeStat = false;
+    timer = null;
+    $('.timer__button').click(function(){
+        if(!timeStat){
+            timeStat = true;
+            timer = setInterval(updateDisplay, 100);
+        }
+        else{
+            timeStat = false;
+            clearInterval(timer)
+            timer = null
+        }
+    })
+    function defaultFormatMilliseconds(x) {
+        var millis, seconds, minutes, hours;
+        millis = Math.floor((x % 1000) / 100);
+        x /= 1000;
+        seconds = Math.floor(x % 60);
+        x /= 60;
+        minutes = Math.floor(x % 60);
+        x /= 60;
+        hours = Math.floor(x % 24);
+        // x /= 24;
+        // days = Math.floor(x);
+        return [hours, minutes, seconds].join(':') + "." + millis;
+    }
+
     $('.burger').click(function(e) {
         e.preventDefault();
         $('.header__navigation').slideToggle();

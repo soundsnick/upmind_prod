@@ -159,3 +159,27 @@ application{
   flex: 0 0 20%;
   text-align: center;
 }
+.timer{
+  position: fixed;
+  left: 0;
+  bottom: 50px;
+  z-index: 9999;
+  background: #2196F3;
+  padding: 15px;
+  border-radius: 0 15px 15px 0;
+  box-shadow: 0 6px 3px -3px rgba(0,0,0,.2);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  &__button{
+    background: #fff;
+    color: #282828;
+    border: 0;
+    font-family: Gotham Pro;
+    font-size: 13px;
+    border-radius: 23px;
+    padding: 6px 10px;
+    margin-top: 5px;
+    cursor: pointer;
+  }
+}
