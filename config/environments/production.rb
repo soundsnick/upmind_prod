@@ -88,7 +88,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
       address:              'smtp.gmail.com',
       port:                 587,
-      domain:               'upmind.kz',
+      domain:               'gmail.com',
       user_name:            'upmindkazakhstan@gmail.com',
       password:             'Asparagine12345',
       authentication:       'plain',
