@@ -69,7 +69,7 @@ html
     - if user_signed_in?
       .timer
         span.timer__text data-ms=0 = "00:00:00.0"
-        button.timer__button = "Start/Stop"
+        button.timer__button = "Старт/Стоп"
   javascript:
     function updateDisplay() {
         let valuez = $(".timer__text").attr('data-ms');
