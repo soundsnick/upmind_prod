@@ -66,9 +66,10 @@ html
               span.copyright
                 = "copyright by "
                 a href="https://askarovich.kz" = "Askarovich Studio"
-    .timer
-      span.timer__text data-ms=0 = "00:00:00.0"
-      button.timer__button = "Start/Stop"
+    - if user_signed_in?
+      .timer
+        span.timer__text data-ms=0 = "00:00:00.0"
+        button.timer__button = "Start/Stop"
   javascript:
     function updateDisplay() {
         let valuez = $(".timer__text").attr('data-ms');
