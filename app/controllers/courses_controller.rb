@@ -18,7 +18,7 @@ class CoursesController < ApplicationController
       end
     else
       if @course = Course.find_by(id: params[:id])
-        redirect_to course_landing_path(@course)
+        redirect_to course_landing_path(@course.id, @course.title)
       else redirect_to courses_path
       end
     end
