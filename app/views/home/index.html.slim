@@ -3,6 +3,7 @@
     h1.uk-card-title = text('home', 'courses_mine')
     - unless @courses_mine.empty?
       .courses-grid
+        - @courses = @courses_mine
         = render 'layouts/courses'
         a.course.course-more href=courses_path
           span.course-more__text.uk-flex.uk-flex-middle
@@ -13,8 +14,9 @@
       .empty
         span.empty = text('home', 'courses_mine_no')
     h1.uk-card-title = text('home', 'courses_last')
-    - unless @courses.empty?
+    - unless @coursess.empty?
       .courses-grid
+        - @courses = @coursess
         = render 'layouts/courses'
         a.course.course-more href=courses_path
           span.course-more__text.uk-flex.uk-flex-middle

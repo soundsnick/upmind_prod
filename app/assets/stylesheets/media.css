@@ -4,7 +4,7 @@
     }
 }
 @media only screen and (max-width: 900px){
-    .courses-grid{
+    .courses-grid, .who-grid{
         grid-template-columns: repeat(3, minmax(100px, 1fr));
     }
     .new{
@@ -34,17 +34,30 @@
         box-sizing: border-box;
         box-shadow: 0 5px 9px rgba(0,0,0,.2);
     }
-    .nav__item{
+    .header__navigation .nav__item{
         display: block;
         padding: 10px;
+        color: royalblue;
         font-size: 16px;
+    }
+    .header__navigation .nav__item:hover{
+        color: #282828;
+    }
+    .burgerr{
+        background: royalblue!important;
+    }
+    .lang{
+        margin-right: 15px;
+    }
+    .burger{
+        color: #fff!important;
     }
     .logo-wrapper{
         flex: 1;
     }
 }
 @media only screen and (max-width: 600px){
-    .courses-grid{
+    .courses-grid, .who-grid{
         grid-template-columns: repeat(1, minmax(100px, 1fr));
     }
     .news-grid{
@@ -53,9 +66,10 @@
     .footer .uk-flex{
         flex-direction: column;
     }
-    .landing-header{
+    .landing-header, .course-landing__header .uk-flex{
         flex-direction: column;
     }
+
     .landing-course{
         flex-direction: column;
     }

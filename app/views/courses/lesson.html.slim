@@ -2,18 +2,57 @@
   .container
     .uk-card.lesson__header.uk-card-body.uk-card-default
       h2.uk-card-title = @lesson.title
+    - if @lesson.content_mini
+      .uk-card.uk-card-body.uk-card-default.lesson__body
+        .fr-view = @lesson.content_mini.html_safe
     video.lesson__player[id="player" src=@lesson.video.url+"#t=2" playsinline controls data-plyr-provider="youtube"]
-    .uk-card.uk-card-body.uk-card-default
+    .uk-card.uk-card-body.uk-card-default.lesson__body
       .fr-view = @lesson.content.html_safe
+    - if @lesson.materials.url
+      .uk-card.uk-card-body.uk-card-default.commenting.circled
+        h2.uk-card-title = "Материал"
+        a href=@lesson.materials.url =@lesson.materials.path.split("/").last
+    - if @lesson.task
+      .uk-card.uk-card-body.uk-card-default.lesson__body
+        h2.uk-card-title = text('lesson', 'task')
+        .fr-view = @lesson.task.html_safe
     .uk-margin
-      .uk-card.uk-card-body.uk-card-primary
+      .uk-card.uk-card-body.uk-card-primary.commenting
         .uk-flex-center.uk-flex
           - if @task = current_user.hometasks.find_by(lesson_id: @lesson.id)
             a href=hometask_path(@lesson) = text('hometask', 'task_view')
           - else
             a href=hometask_path(@lesson) = text('hometask', 'task_send')
+    .uk-card.uk-card-body.uk-card-default.commenting
+      = form_for(StudentQuestion.new, html: {class: 'uk-form-stacked auth'}) do |f|
+        h2.uk-card-title style="margin-top: 0;" = text('lesson', 'question')
+        .uk-margin
+          = f.hidden_field :lesson_id, value: @lesson.id
+          = f.label :question, class: 'uk-form-label um-form-label'
+            = "Текст"
+          .uk-flex
+            = f.text_field :question, autofocus: true, class: 'uk-input', placeholder: text('comment', 'comment_text')
+            = f.submit text('comment', 'comment_button'), class: 'uk-button uk-button-primary'
+      = form_for(Feedback.new, html: {class: 'uk-form-stacked auth'}) do |f|
+        h2.uk-card-title style="margin-top: 0;" = text('feedback', 'title')
+        .uk-margin
+          = f.hidden_field :lesson_id, value: @lesson.id
+          .uk-margin
+            = f.label :first_question, class: 'uk-form-label um-form-label'
+              = text('feedback', 'first')
+            = f.text_field :first_question, autofocus: true, class: 'uk-input', placeholder: text('comment', 'comment_text')
+          .uk-margin
+            = f.label :second_question, class: 'uk-form-label um-form-label'
+              = text('feedback', 'second')
+            = f.text_field :second_question, autofocus: true, class: 'uk-input', placeholder: text('comment', 'comment_text')
+          .uk-margin
+            = f.label :third_question, class: 'uk-form-label um-form-label'
+              = text('feedback', 'third')
+            = f.text_field :third_question, autofocus: true, class: 'uk-input', placeholder: text('comment', 'comment_text')
+          .uk-flex
+            = f.submit text('comment', 'comment_button'), class: 'uk-button uk-button-primary'
     h2.uk-article-title style="font-size: 23px;" = "Комментарий #{"(#{@lesson.comments.count})" if @lesson.comments.count > 0}"
-    .uk-card.uk-card-body.uk-card-secondary
+    .uk-card.uk-card-body.uk-card-secondary.commenting
       = form_for(Comment.new, html: {class: 'uk-form-stacked auth'}) do |f|
         h2.uk-card-title style="margin-top: 0;" = text('comment', 'comment_title')
         .uk-margin
@@ -26,7 +65,7 @@
     - unless @lesson.comments.empty?
       - @lesson.comments.each do |comment|
         .uk-margin
-          article class="uk-comment uk-comment-default uk-card uk-card-body uk-card-default"
+          article class="uk-comment uk-comment-default uk-card uk-card-body uk-card-default commenting"
             header[class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid]
               div class="uk-width-auto"
                 div[uk-lightbox]

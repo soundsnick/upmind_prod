@@ -8,7 +8,7 @@
         h3.faq-category__title.uk-card-title = faq_category.title
         ul.faq-list[uk-accordion]
           - faq_category.faqs.each do |faq|
-            li.uk-card.uk-card-default.uk-card-body
+            li.uk-card.uk-card-default.uk-card-body.question
               a class="uk-accordion-title faq-title" href="#" = faq.question
               .uk-accordion-content
                 p.faq__answer = faq.answer

@@ -1,7 +1,8 @@
 @import "variables";
 
 html{
-  font-family: "Gotham Pro", Roboto, Sans-Serif, serif;
+  //font-family: "Gotham Pro", Roboto, Sans-Serif, serif;
+  font-family: Roboto, Helvetica, Verdana, sans-serif;
 }
 body{
   margin: 0;
@@ -14,7 +15,8 @@ body{
 }
 .container{
   position: relative;
-  max-width: 1000px;
+  //max-width: 1000px;
+  padding: 0 40px;
   margin: auto;
   &-mini{
     position: relative;
@@ -34,13 +36,21 @@ html input.uk-input, html select.uk-select{
   font-weight: 200;
 }
 .header{
-  background: #fff;
+  background: #1e87f0;
   padding: 10px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 }
 .logo{
   margin: 0;
-  font-size: 20px;
-  color: #000;
+  font-size: 18px;
+  padding: 0;
+  font-family: Gotham Pro;
+  font-weight: 400;
+  color: #fff;
+  b{
+    color: #fff;
+    font-weight: inherit;
+  }
   a{
     color: inherit;
     &:hover{
@@ -51,8 +61,7 @@ html input.uk-input, html select.uk-select{
 }
 
 .sign-links{
-  display: inline-block;
-  font-size: 12px;
+  display: inline-flex;
   font-weight: 200;
 }
 application{
@@ -92,9 +101,19 @@ application{
     font-size: 14px;
     margin: 0 10px;
     font-weight: 200;
+    color: #fff;
+    transition: opacity 0.2s;
+    &:hover{
+      color: #fff;
+      opacity: .9;
+      text-decoration: none;
+    }
     &.account{
-      color: #282828;
+      color: #fff;
       cursor: pointer;
+      &:hover{
+        color: #fff;
+      }
       &:hover::after{
         width: 20%;
       }
@@ -102,19 +121,15 @@ application{
         content: '';
         display: block;
         height: 3px;
-        background: #2196F3;
+        background: #E91E63;
         border-radius: 15px 15px 0 0;
         position: absolute;
         width: 0%;
-        bottom: -13px;
+        bottom: -10px;
         left: 50%;
         transform: translateX(-50%);
         transition: width 0.2s;
         will-change: width;
-      }
-      &:hover{
-        text-decoration: none;
-        color: #282828;
       }
     }
   }
@@ -139,4 +154,8 @@ application{
 .empty{
   font-size: 14px;
   font-weight: 200;
+}
+.lang{
+  flex: 0 0 20%;
+  text-align: center;
 }

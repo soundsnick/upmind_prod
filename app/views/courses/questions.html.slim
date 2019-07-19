@@ -1,0 +1,19 @@
+.uk-card.uk-card-primary.faq-header
+  .container
+    h1.uk-card-title = text('questions', 'title')
+.faq
+  .container
+    - unless @questions.empty?
+      ul.faq-list[uk-accordion]
+        - @questions.each_with_index do |faq, i|
+          li.uk-card.uk-card-default.uk-card-body.question
+            a class="uk-accordion-title faq-title" href="#" = (i+1).to_s + ". " + faq.question
+            .uk-accordion-content
+              p.faq__answer = faq.answer? ? faq.answer : text('questions', 'empty')
+        - if @questions.empty?
+          .empty
+            span.empty = text('common', 'empty')
+
+    - else
+      .empty
+        span.empty = text('common', 'empty')

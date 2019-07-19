@@ -14,8 +14,13 @@ html
           .uk-flex.uk-flex-middle
             .logo-wrapper
               h1.logo
-                a href=root_path = "Upmind"
-            nav class="uk-navbar uk-navbar-container uk-margin"
+                a href=root_path
+                  = "Up"
+                  b = "mind"
+            .lang
+              - not_set_languages.each do |lang|
+                a.nav__item href=language_path(lang.abbr) = lang.title
+            nav class="uk-navbar uk-navbar-container uk-margin burgerr"
               div class="uk-navbar-left"
                 a[class="uk-navbar-toggle burger" uk-navbar-toggle-icon href="#"]
             nav.header__navigation.uk-flex-1
@@ -23,6 +28,7 @@ html
               a.nav__item href=news_path = text('header', 'news')
               - if user_signed_in?
                 a.nav__item href=hometasks_path = text('header', 'hometasks')
+                a.nav__item href=questions_path = text('questions', 'title')
               a.nav__item href=faq_path = text('header', 'faq')
               a.nav__item href=rules_path = text('header', 'rules')
               - if current_user.try(:admin?)
@@ -39,8 +45,6 @@ html
                       = link_to text('header', 'logout'), destroy_user_session_path, :method => :delete, class: 'uk-button uk-button-danger circled uk-width-1 uk-form-small'
                 - else
                   = link_to text('header', 'login'), new_user_session_path, class: 'nav__item'
-              - not_set_languages.each do |lang|
-                a.nav__item href=language_path(lang.abbr) = lang.title
       main.yield
         - if notice
           .notice.global-notice

@@ -5,7 +5,7 @@
         .uk-flex-1
           h1.landing-title = text('landing', 'title')
           p.landing-description = text('landing', 'description')
-          a.circled.uk-button.uk-button-primary href=new_user_registration_path = text('signin', 'signin_register_link')
+          a.circled.uk-button.uk-button-primary href=courses_path = text('landing', 'more')
         .uk-flex-1
   .landing-content
     .landing-courses
@@ -28,6 +28,19 @@ css:
     z-index: 9999;
     background: transparent;
     transition: background 0.2s, padding 0.2s;
+    border: none;
+  }
+  .logo{
+    color: royalblue;
+  }
+  .logo b{
+    color: royalblue;
+  }
+  .nav__item, .nav__item.account{
+    color: #282828;
+  }
+  .nav__item:hover, .nav__item.account:hover{
+    color: royalblue;
   }
   .header.active{
     background: #fff;

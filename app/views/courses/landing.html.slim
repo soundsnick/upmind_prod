@@ -1,0 +1,114 @@
+header.course-landing__header style="background-image: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,0.6)), url(#{@course.image.url})"
+  .container
+    .uk-flex
+      .uk-flex-1
+        - if notice
+          .uk-alert-primary.animated.fadeIn.uk-width-1[uk-alert]
+            = notice
+        h1.uk-article-title.course-landing__header-title = @course.landing_header_title
+        p.course-landing__header-paragraph = @course.landing_header_paragraph
+        span.course-landing__header-cost
+          = @course.price.to_s
+          b = "тг"
+        a.course-landing__header-button href="#price" = text('course-landing', 'button')
+        a.course-landing__header-button.transparent href="#program" = text('course-landing', 'program')
+      .uk-flex-1
+section.course-landing__about
+  .container
+    h2.course-landing__about-title = @course.landing_about_title
+    p.course-landing__about-paragraph = @course.landing_about_paragraph
+section.course-landing__forwhos
+  .container
+    h2.course-landing__about-title = text('course-landing', 'forwho_title')
+    .who-grid
+      - @course.course_whos.each do |w|
+        .who
+          img.who__icon src=w.icon.url
+          h4.who__title = w.title
+          p.who__paragraph = w.description
+section.course-landing__forwho#program
+  .container
+    h2.course-landing__about-title = text('course-landing', 'program_title')
+    p.course-landing__about-paragraph = @course.landing_program_description
+    .program-grid.news-grid
+      - @course.lessons.each_with_index do |l, i|
+        article.course__lesson
+          h5.course__lesson-title = "#{text('course-landing', 'lesson')} #{i.to_s}: " + l.title
+          p.course__lesson-paragraph = l.description
+.uk-card.uk-card-secondary.uk-card-body.price-block#price
+  .container.uk-flex
+    div
+      h3.price-title = text('course-landing', 'price_title')
+      span.price = @course.price.to_s + "тг"
+    .uk-flex-1 style="text-align: right"
+      form action="/buy" method="post"
+        input name="name" type="text" placeholder=text('course-landing', 'name')
+        input name="phone" type="text" placeholder=text('course-landing', 'phone')
+        input name="course_id" type="hidden" value=@course.id
+        input type="submit" value=text('course-landing', 'button')
+section.course-landing__forwhos
+  .container
+    h2.course-landing__about-title = text('header', 'faq')
+    ul.faq-list[uk-accordion]
+      - @course.course_faqs.each do |faq|
+        li.uk-card.uk-card-default.uk-card-body.question
+          a class="uk-accordion-title faq-title" href="#" = faq.title
+          .uk-accordion-content
+            p.faq__answer = faq.answer
+footer.footer.uk-card.uk-card-default.uk-card-body style="box-shadow: none"
+  .container
+    .uk-flex
+      .uk-flex-1
+        .adress = text('common', 'adress')
+      .uk-flex-1 style="text-align: right"
+        - Social.all.each do |s|
+          a href=s.link
+            img.social src=s.icon.url
+javascript:
+    $(window).scroll(function () {
+        if ($(window).scrollTop() > 10) {
+            $('.header').addClass('active');
+        } else {
+            $('.header').removeClass('active');
+        }
+    })
+css:
+  .header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 25px 0;
+    z-index: 9999;
+    background: transparent;
+    transition: background 0.2s, padding 0.2s;
+    border: none;
+  }
+  .logo{
+    color: #03A9F4;
+  }
+  .logo b{
+    color: #03A9F4;
+  }
+  .nav__item, .nav__item.account{
+    color: #fff;
+  }
+  .nav__item:hover, .nav__item.account:hover{
+    color: royalblue;
+  }
+  .header.active{
+    background: #282828;
+    padding: 15px 0;
+    box-shadow: 0 11px 8px -9px rgba(0,0,0,.05);
+  }
+  .container{
+    position: relative;
+    max-width: 1170px;
+    margin: auto;
+  }
+  body{
+    background: #fff;
+  }
+  .notice.global-notice{
+    display: none;
+  }

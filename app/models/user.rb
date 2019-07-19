@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :comments
   has_and_belongs_to_many :courses
   has_many :hometasks
+  has_many :student_questions
+  has_many :feedbacks
 end

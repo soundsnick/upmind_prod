@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_15_014951) do
+ActiveRecord::Schema.define(version: 2019_07_19_153144) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "buys", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.integer "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -33,6 +41,19 @@ ActiveRecord::Schema.define(version: 2019_07_15_014951) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "course_faqs", force: :cascade do |t|
+    t.string "title"
+    t.text "answer"
+    t.integer "course_id"
+  end
+
+  create_table "course_whos", force: :cascade do |t|
+    t.string "icon"
+    t.string "title"
+    t.text "description"
+    t.integer "course_id"
+  end
+
   create_table "courses", force: :cascade do |t|
     t.string "title"
     t.string "image"
@@ -41,6 +62,12 @@ ActiveRecord::Schema.define(version: 2019_07_15_014951) do
     t.datetime "updated_at", null: false
     t.string "color"
     t.integer "language_id"
+    t.integer "price"
+    t.string "landing_header_title"
+    t.text "landing_header_paragraph"
+    t.string "landing_about_title"
+    t.text "landing_about_paragraph"
+    t.string "landing_program_description"
   end
 
   create_table "courses_users", force: :cascade do |t|
@@ -57,6 +84,16 @@ ActiveRecord::Schema.define(version: 2019_07_15_014951) do
     t.string "question"
     t.text "answer"
     t.integer "faq_category_id"
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.string "first_question"
+    t.string "second_question"
+    t.string "third_question"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "lesson_id"
   end
 
   create_table "hometasks", force: :cascade do |t|
@@ -81,6 +118,10 @@ ActiveRecord::Schema.define(version: 2019_07_15_014951) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "video"
+    t.text "content_mini"
+    t.text "task"
+    t.text "description"
+    t.string "materials"
   end
 
   create_table "news", force: :cascade do |t|
@@ -93,6 +134,21 @@ ActiveRecord::Schema.define(version: 2019_07_15_014951) do
     t.string "image_dominant_color"
     t.text "content"
     t.integer "language_id"
+  end
+
+  create_table "socials", force: :cascade do |t|
+    t.string "link"
+    t.string "label"
+    t.string "icon"
+  end
+
+  create_table "student_questions", force: :cascade do |t|
+    t.integer "lesson_id"
+    t.integer "user_id"
+    t.text "question"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "answer"
   end
 
   create_table "template_modules", force: :cascade do |t|

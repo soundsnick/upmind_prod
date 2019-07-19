@@ -10,11 +10,13 @@ Rails.application.routes.draw do
   get 'users/profile', as: :user_root
   get 'courses', to: 'courses#index', as: :courses
   get 'course.:id(.:format)', to: 'courses#course', as: :course
+  get 'course/:id-:title', to: 'courses#landing', as: :course_landing
   get 'lesson.:id(.:format)', to: 'courses#lesson', as: :lesson
   get 'hometasks', to: 'hometasks#index', as: :hometasks
   get 'hometask.:id(.:format)', to: 'hometasks#hometask', as: :hometask
   put 'hometask.:id(.:format)', to: 'hometasks#hometask_send', as: :hometask_send
   put 'hometasks', to: 'hometasks#hometask_new', as: :hometask_new
+  post 'buy', to: 'courses#buy'
 
   get 'news', to: 'news#index', as: :news
   get 'new.:id(.:format)', to: 'news#new', as: :new
@@ -23,6 +25,9 @@ Rails.application.routes.draw do
   get 'rules', to: 'home#rules', as: :rules
 
   post 'comment/new', to: 'courses#comment_new', as: :comments
+  post 'question/new', to: 'courses#question_new', as: :student_questions
+  post 'feedback/new', to: 'courses#feedback_new', as: :feedbacks
+  get 'questions', to: 'courses#questions', as: :questions
 
 
 end

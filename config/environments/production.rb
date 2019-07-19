@@ -83,10 +83,17 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
   config.action_mailer.default_url_options = { :host => "upmind.kz" }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      address:              'smtp.gmail.com',
+      port:                 587,
+      domain:               'upmind.kz',
+      user_name:            'upmindkazakhstan@gmail.com',
+      password:             'Asparagine12345',
+      authentication:       'plain',
+      enable_starttls_auto: true
+  }
 
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?

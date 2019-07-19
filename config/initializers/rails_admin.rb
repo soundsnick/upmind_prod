@@ -29,8 +29,12 @@ RailsAdmin.config do |config|
   config.model 'Lesson' do
     edit do
       field :title
+      field :description
       field :video
+      field :materials
+      field :content_mini, :ck_editor
       field :content, :ck_editor
+      field :task, :ck_editor
       field :course
     end
   end
