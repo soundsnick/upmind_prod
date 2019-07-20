@@ -38,9 +38,10 @@ section.course-landing__forwho#program
 .uk-card.uk-card-secondary.uk-card-body.price-block#price
   .container.uk-flex
     div
-      h3.price-title = text('course-landing', 'price_title')
-      .course-landing__header-cost
-        = @course.price.html_safe
+      - @course.price
+        h3.price-title = text('course-landing', 'price_title')
+        .course-landing__header-cost
+          = @course.price.html_safe
     .uk-flex-1 style="text-align: right"
       form action="/buy" method="post"
         input name="name" type="text" placeholder=text('course-landing', 'name')
