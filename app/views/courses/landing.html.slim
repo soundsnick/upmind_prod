@@ -35,10 +35,14 @@ section.course-landing__forwho#program
         article.course__lesson
           h5.course__lesson-title = "#{text('course-landing', 'lesson')} #{(i+1).to_s}: " + l.title
           p.course__lesson-paragraph = l.description
+section.course-landing__forwho#program
+  .container
+    h2.course-landing__about-title = text('course-landing', 'introduction')
+    video.lesson__player[id="player" src=@course.lessons.first.video.url+"#t=2" playsinline controls data-plyr-provider="youtube"]
 .uk-card.uk-card-secondary.uk-card-body.price-block#price
   .container.uk-flex
     div
-      - @course.price
+      - if @course.price
         h3.price-title = text('course-landing', 'price_title')
         .course-landing__header-cost
           = @course.price.html_safe
