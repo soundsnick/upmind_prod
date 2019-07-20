@@ -35,7 +35,7 @@ section.course-landing__forwho#program
         article.course__lesson
           h5.course__lesson-title = "#{text('course-landing', 'lesson')} #{(i+1).to_s}: " + l.title
           p.course__lesson-paragraph = l.description
-section.course-landing__forwho#program
+section.course-landing__forwho#program style="padding-bottom: 80px"
   .container
     h2.course-landing__about-title = text('course-landing', 'introduction')
     video.lesson__player[id="player" src=@course.lessons.first.video.url+"#t=2" playsinline controls data-plyr-provider="youtube"]
