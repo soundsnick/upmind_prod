@@ -60,6 +60,15 @@
     .courses-grid, .who-grid{
         grid-template-columns: repeat(1, minmax(100px, 1fr));
     }
+    footer{
+        text-align: center;
+    }
+    .adress{
+        margin-bottom: 10px;
+    }
+    .soc{
+        text-align: center!important;
+    }
     .news-grid{
         grid-template-columns: repeat(1, minmax(100px, 1fr))!important;
     }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_19_153144) do
+ActiveRecord::Schema.define(version: 2019_07_20_125136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,12 +62,12 @@ ActiveRecord::Schema.define(version: 2019_07_19_153144) do
     t.datetime "updated_at", null: false
     t.string "color"
     t.integer "language_id"
-    t.integer "price"
     t.string "landing_header_title"
     t.text "landing_header_paragraph"
     t.string "landing_about_title"
     t.text "landing_about_paragraph"
     t.string "landing_program_description"
+    t.text "price"
   end
 
   create_table "courses_users", force: :cascade do |t|
@@ -134,6 +134,12 @@ ActiveRecord::Schema.define(version: 2019_07_19_153144) do
     t.string "image_dominant_color"
     t.text "content"
     t.integer "language_id"
+  end
+
+  create_table "programs", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "course_id"
   end
 
   create_table "socials", force: :cascade do |t|

@@ -39,6 +39,12 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model Course do
+    update do
+      configure :price, :ck_editor
+    end
+  end
+
   config.model 'Template' do
     edit do
       field :label

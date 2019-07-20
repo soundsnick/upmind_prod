@@ -172,12 +172,14 @@
     background-position: center;
     &-cost{
       display: block;
-      color: #fff;
-      font-size: 33px;
       font-family: Gotham Pro;
       text-shadow: 0 2px 0 black;
-      b{
-        color: royalblue;
+      h1,h2,h3,h4,h5,h6{
+        color: #fff;
+        margin-bottom: 5px;
+      }
+      p{
+        margin: 5px 0;
       }
     }
     &-title{

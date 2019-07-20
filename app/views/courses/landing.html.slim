@@ -7,9 +7,9 @@ header.course-landing__header style="background-image: linear-gradient(rgba(0,0,
             = notice
         h1.uk-article-title.course-landing__header-title = @course.landing_header_title
         p.course-landing__header-paragraph = @course.landing_header_paragraph
-        span.course-landing__header-cost
-          = @course.price.to_s
-          b = "тг"
+        - if @course.price
+          div.course-landing__header-cost
+            = @course.price.html_safe
         a.course-landing__header-button href="#price" = text('course-landing', 'button')
         a.course-landing__header-button.transparent href="#program" = text('course-landing', 'program')
       .uk-flex-1
@@ -31,15 +31,16 @@ section.course-landing__forwho#program
     h2.course-landing__about-title = text('course-landing', 'program_title')
     p.course-landing__about-paragraph = @course.landing_program_description
     .program-grid.news-grid
-      - @course.lessons.each_with_index do |l, i|
+      - @course.programs.each_with_index do |l, i|
         article.course__lesson
-          h5.course__lesson-title = "#{text('course-landing', 'lesson')} #{i.to_s}: " + l.title
+          h5.course__lesson-title = "#{text('course-landing', 'lesson')} #{(i+1).to_s}: " + l.title
           p.course__lesson-paragraph = l.description
 .uk-card.uk-card-secondary.uk-card-body.price-block#price
   .container.uk-flex
     div
       h3.price-title = text('course-landing', 'price_title')
-      span.price = @course.price.to_s + "тг"
+      .course-landing__header-cost
+        = @course.price.html_safe
     .uk-flex-1 style="text-align: right"
       form action="/buy" method="post"
         input name="name" type="text" placeholder=text('course-landing', 'name')
@@ -60,7 +61,7 @@ footer.footer.uk-card.uk-card-default.uk-card-body style="box-shadow: none"
     .uk-flex
       .uk-flex-1
         .adress = text('common', 'adress')
-      .uk-flex-1 style="text-align: right"
+      .uk-flex-1.soc style="text-align: right"
         - Social.all.each do |s|
           a href=s.link
             img.social src=s.icon.url
