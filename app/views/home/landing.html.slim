@@ -18,6 +18,15 @@
               h4.landing-course__title = course.title
               p.landing-course__paragraph = course.description
               a.uk-button.uk-button-primary.circled href=course_path(course) = text('landing', 'more')
+footer.footer.uk-card.uk-card-default.uk-card-body style="box-shadow: none"
+  .container
+    .uk-flex
+      .uk-flex-1
+        .adress = text('common', 'adress')
+      .uk-flex-1.soc style="text-align: right"
+        - Social.all.each do |s|
+          a href=s.link
+            img.social src=s.icon.url
 css:
   .header{
     position: fixed;
@@ -54,6 +63,10 @@ css:
   }
   body{
     background: #f7f7f7;
+  }
+
+  .lang {
+    flex: 0 0 10% !important;
   }
 javascript:
   $(window).scroll(function(){

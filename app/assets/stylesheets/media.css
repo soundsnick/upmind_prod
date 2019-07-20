@@ -75,7 +75,7 @@
     .footer .uk-flex{
         flex-direction: column;
     }
-    .landing-header, .course-landing__header .uk-flex{
+    .landing-header .uk-flex, .course-landing__header .uk-flex{
         flex-direction: column;
     }
 
