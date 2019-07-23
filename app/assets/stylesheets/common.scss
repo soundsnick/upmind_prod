@@ -186,3 +186,6 @@ application{
 .footer-logo--wrapper .logo{
   font-family: inherit!important;
 }
+.plyr:-webkit-full-screen video {
+  height: 100%!important;
+}
