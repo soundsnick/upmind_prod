@@ -1,4 +1,4 @@
-server '95.47.156.174', port: 22, roles: [:web, :app, :db], primary: true
+server '93.170.128.45', port: 22, roles: [:web, :app, :db], primary: true
 set :repo_url,        'git@github.com:soundsnick/upmind_prod.git'
 set :application,     'upmind'
 set :user,            'deploy'
