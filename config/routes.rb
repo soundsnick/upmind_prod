@@ -29,5 +29,6 @@ Rails.application.routes.draw do
   post 'feedback/new', to: 'courses#feedback_new', as: :feedbacks
   get 'questions', to: 'courses#questions', as: :questions
 
-
+  get 'multiple.:lesson_id(:format)', to: 'multiple#index', as: :multiple
+  post 'multiple', to: 'multiple#post_answer', as: :user_choices
 end

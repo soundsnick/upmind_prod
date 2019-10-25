@@ -1,0 +1,41 @@
+.uk-card.uk-card-primary.faq-header
+  .container
+    h1.uk-card-title = "Тест: " + @multiple.title
+.home
+  .container-low
+    - unless @multiple.multiple_questions.empty?
+      = form_for(UserChoice.new, html: {method: :post, class: 'uk-form-stacked auth'}) do |f|
+        input type="text" name="multiple" value=@multiple.id hidden="true"
+        - @multiple.multiple_questions.each_with_index do |q, i|
+          .multiple__question
+            span.multiple__question__title = "№#{i+1}. " + q.question
+            - q.multiple_answers.each do |a|
+              label.multiple__answer--wrapper
+                - hasAnswer = false
+                - if UserChoice.find_by(user_id: current_user.id, multiple_answer_id: a.id)
+                  - @hasAnswer = true
+                  - if a.correct
+                    input type="radio" name="answers[#{q.id}]" value=a.id hidden="true" checked="true" correct="true" disabled="true"
+                  - else
+                    input type="radio" name="answers[#{q.id}]" value=a.id hidden="true" checked="true" correct="false" disabled="true"
+                - else
+                  - if @hasAnswer
+                    - if a.correct
+                      input type="radio" name="answers[#{q.id}]" value=a.id hidden="true" correct="true" disabled="true"
+                    - else
+                      input type="radio" name="answers[#{q.id}]" value=a.id hidden="true"  disabled="true"
+                  - else
+                    input type="radio" name="answers[#{q.id}]" value=a.id hidden="true"
+                .multiple__answer.uk-card.uk-card-default
+                  .multiple__radio
+                  span = a.answer
+        - if UserChoice.where(user_id: current_user, multiple_question_id: @multiple.multiple_questions).empty?
+          .uk-margin
+            = f.submit text('account', 'account_button'), class: 'uk-button uk-button-primary uk-width-1'
+        - else
+          .uk-margin
+            - @correct = UserChoice.where(user_id: current_user, multiple_question_id: @multiple.multiple_questions, multiple_answer_id: MultipleAnswer.where(correct: true, multiple_question_id: @multiple.multiple_questions)).count
+            - @correct_pct = (@correct.to_d / @multiple.multiple_questions.count.to_d) * 100
+            .uk-card.uk-card-default.result-block[class=point_to_color(@correct_pct)]
+              span.mark = point_to_mark(@correct_pct)
+              span.result = "Результат: " + @correct_pct.to_s + "%"

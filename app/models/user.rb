@@ -9,4 +9,6 @@ class User < ApplicationRecord
   has_many :hometasks
   has_many :student_questions
   has_many :feedbacks
+  has_many :user_choices
+  has_many :multiple_result
 end

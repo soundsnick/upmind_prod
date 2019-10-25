@@ -1,13 +1,16 @@
 .lesson
   .container
-    .uk-card.lesson__header.uk-card-body.uk-card-default
-      h2.uk-card-title = @lesson.title
-    - if @lesson.content_mini
+    - if @lesson.title
+      .uk-card.lesson__header.uk-card-body.uk-card-default
+        h2.uk-card-title = @lesson.title
+    - if @lesson.content_mini.length > 3
       .uk-card.uk-card-body.uk-card-default.lesson__body
         .fr-view = @lesson.content_mini.html_safe
-    video.lesson__player[id="player" src=@lesson.video.url+"#t=2" playsinline controls data-plyr-provider="youtube"]
-    .uk-card.uk-card-body.uk-card-default.lesson__body
-      .fr-view = @lesson.content.html_safe
+    - if @lesson.video
+      video.lesson__player[id="player" src=@lesson.video.url+"#t=2" playsinline controls data-plyr-provider="youtube"]
+    - if @lesson.content.length > 3
+      .uk-card.uk-card-body.uk-card-default.lesson__body
+        .fr-view = @lesson.content.html_safe
     - if @lesson.materials.url
       .uk-card.uk-card-body.uk-card-default.commenting.circled
         h2.uk-card-title = "Материал"
@@ -16,6 +19,14 @@
       .uk-card.uk-card-body.uk-card-default.lesson__body
         h2.uk-card-title = text('lesson', 'task')
         .fr-view = @lesson.task.html_safe
+    - if @lesson.multiple
+      .uk-margin
+        .uk-card.uk-card-body.uk-card-primary.commenting
+          .uk-flex-center.uk-flex
+            a href=multiple_path(@lesson)
+              = "Тест: #{@lesson.multiple.title}"
+              - if @res = MultipleResult.find_by(user_id: current_user.id, multiple_id: @lesson.multiple.id)
+                = " (#{@res.result}%)"
     .uk-margin
       .uk-card.uk-card-body.uk-card-primary.commenting
         .uk-flex-center.uk-flex

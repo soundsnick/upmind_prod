@@ -6,4 +6,5 @@ class Lesson < ApplicationRecord
   mount_uploader :materials, MaterialsUploader
   has_many :student_questions
   has_many :feedbacks
+  has_one :multiple
 end

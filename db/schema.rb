@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_20_125136) do
+ActiveRecord::Schema.define(version: 2019_10_25_201051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,6 +124,33 @@ ActiveRecord::Schema.define(version: 2019_07_20_125136) do
     t.string "materials"
   end
 
+  create_table "multiple_answers", force: :cascade do |t|
+    t.integer "multiple_question_id"
+    t.text "answer"
+    t.boolean "correct"
+  end
+
+  create_table "multiple_questions", force: :cascade do |t|
+    t.integer "multiple_id"
+    t.text "question"
+  end
+
+  create_table "multiple_results", force: :cascade do |t|
+    t.integer "multiple_id"
+    t.integer "user_id"
+    t.float "result"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "multiples", force: :cascade do |t|
+    t.integer "lesson_id"
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "news", force: :cascade do |t|
     t.string "title"
     t.text "description_short"
@@ -167,6 +194,12 @@ ActiveRecord::Schema.define(version: 2019_07_20_125136) do
     t.string "label"
     t.integer "template_module_id"
     t.text "title"
+  end
+
+  create_table "user_choices", force: :cascade do |t|
+    t.integer "multiple_question_id"
+    t.integer "multiple_answer_id"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
