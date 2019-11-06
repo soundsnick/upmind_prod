@@ -4,8 +4,7 @@
 .news{
   &-grid{
     display: grid;
-    grid-template-columns: repeat(2, minmax(100px, 1fr));
-    grid-gap: 30px;
+    grid-template-columns: repeat(1, minmax(100px, 1fr));
   }
 }
 .new{
@@ -31,13 +30,13 @@
     flex: 0 0 25%;
     background-size: cover;
     background-position: center;
-    border-radius: 0 128% 40% 0;
-    box-shadow: inset -5px 1px 0px;
     transition: border-radius 0.2s, box-shadow 0.2s;
+    filter: brightness(0.9);
+    transition: filter 0.2s;
   }
   &:hover .new__image--wrapper{
-    border-radius: 0 10px 10px 0;
-    box-shadow: none!important;
+    box-shadow: none !important;
+    filter: brightness(1);
   }
 }
 .article{

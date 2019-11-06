@@ -4,12 +4,39 @@
 .courses{
   &-grid{
     display: grid;
-    grid-template-columns: repeat(5, minmax(100px, 1fr));
-    grid-gap: 30px;
+    grid-template-columns: repeat(3, minmax(100px, 1fr));
+    grid-gap: 15px;
+    padding: 5px;
+    background: rgba(63, 81, 181, 0.04);
+    border-radius: 35px;
+  }
+}
+.news-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(100px, 1fr));
+  grid-gap: 10px;
+  padding: 15px;
+  background: rgba(63, 81, 181, 0.04);
+  border-radius: 35px;
+}
+.title-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 15px 0;
+  margin-top: 25px;
+  .uk-card-title{
+    margin-bottom: 0;
+    font-size: 15px;
+    line-height: 1.3;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    font-weight: 700;
   }
 }
 .course{
-  border-radius: 10px;
+  display: flex;
+  border-radius: 30px;
   overflow: hidden;
   opacity: 1;
   box-shadow: 0 1px 2px rgba(0,0,0,.05);
@@ -26,26 +53,39 @@
     padding: 15px;
   }
   &__title{
-    line-height: 1.5;
-    font-size: 23px;
-    font-weight: 300;
+    line-height: 1.3;
+    font-size: 14px;
+    font-weight: bold;
     margin-bottom: 5px;
+    text-transform: uppercase;
     margin-top: 7px;
+    font-family: sans-serif;
+    color: #282828;
   }
   &__description{
     margin-top: 0;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 200;
-    line-height: 1.4;
-    color: #828282;
+    line-height: 1.2;
+    color: #6f6f6f;
+    font-family: sans-serif;
   }
   &__image{
-    border-radius: 0 0 30% 0%;
     display: block;
     position: relative;
     z-index: 2;
+    filter: brightness(0.9);
+    transition: filter 0.2s;
+    &:hover{
+      filter: brightness(1);
+    }
     &--wrapper{
       position: relative;
+      flex: 0 0 50%;
+      background-image: url(https://image.shutterstock.com/image-photo/colorful-flower-on-dark-tropical-260nw-721703848.jpg);
+      background-size: cover;
+      background-color: #f1f1f1;
+      background-position: center;
       .after{
         content: '';
         display: block;
@@ -63,11 +103,13 @@
   &-more{
     position: relative;
     overflow: hidden;
-    background: linear-gradient(to right, #03A9F4 0%, #3f43b5 100%);
+    background: #3f43b5;
     display: flex;
+    padding: 6px 25px;
     cursor: pointer;
     align-items: center;
-    font-size: 18px;
+    font-size: 12px;
+    text-transform: uppercase;
     justify-content: space-around;
     font-weight: 300;
     color: #fff;
@@ -75,10 +117,6 @@
     transition: box-shadow 1s;
     &:hover .course-more__icon{
       margin-left: 15px;
-    }
-    &.news-more{
-      padding: 30px;
-      margin-top: 30px;
     }
     &__icon{
       margin-left: 7px;
@@ -90,7 +128,7 @@
     &:hover{
       text-decoration: none;
       color: #fff;
-      box-shadow: 0 40px 39px -24px #f093fb;
+      box-shadow: 0 40px 39px -24px rgba(0, 0, 255, 0.33);
     }
     span{
       position: relative;
@@ -102,7 +140,7 @@
       position: absolute;
       bottom: 0;
       right: 0;
-      background: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+      background: blue;
       width: 0;
       transform: scale(1);
       height: 0;
@@ -163,6 +201,9 @@
 .plyr{
   border-radius: 15px;
 }
+tt{
+  font-family: inherit;
+}
 .course-landing{
   &__header{
     padding: 150px 0;
@@ -170,10 +211,12 @@
     color: #fff;
     background-size: cover;
     background-position: center;
+    *{
+      font-family: inherit;
+    }
     &-cost{
       display: block;
-      font-family: Gotham Pro;
-      text-shadow: 0 2px 0 black;
+      font-family: Roboto;
       h1,h2,h3,h4,h5,h6{
         color: #fff;
         margin-bottom: 5px;

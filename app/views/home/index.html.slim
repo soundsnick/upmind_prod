@@ -1,41 +1,44 @@
 .home
   .container
-    h1.uk-card-title = text('home', 'courses_mine')
+    .title-header
+      h1.uk-card-title = text('home', 'courses_mine')
+      a.course.course-more href=courses_path
+        span.course-more__text.uk-flex.uk-flex-middle
+          strong = text('home', 'courses_more')
+          i.course-more__icon
+            = fa_icon('arrow-right')
     - unless @courses_mine.empty?
       .courses-grid
         - @courses = @courses_mine
         = render 'layouts/courses'
-        a.course.course-more href=courses_path
-          span.course-more__text.uk-flex.uk-flex-middle
-            strong = text('home', 'courses_more')
-            i.course-more__icon
-              = fa_icon('arrow-right')
     - else
       .empty
         span.empty = text('home', 'courses_mine_no')
-    h1.uk-card-title = text('home', 'courses_last')
+    .title-header
+      h1.uk-card-title = text('home', 'courses_last')
+      a.course.course-more href=courses_path
+        span.course-more__text.uk-flex.uk-flex-middle
+          strong = text('home', 'courses_more')
+          i.course-more__icon
+            = fa_icon('arrow-right')
     - unless @coursess.empty?
       .courses-grid
         - @courses = @coursess
         = render 'layouts/courses'
-        a.course.course-more href=courses_path
-          span.course-more__text.uk-flex.uk-flex-middle
-            strong = text('home', 'courses_more')
-            i.course-more__icon
-              = fa_icon('arrow-right')
     - else
       .empty
         span.empty = text('common', 'empty')
 
-    h1.uk-card-title = text('home', 'news_last')
-    - unless @news.empty?
-      .news-grid
-        = render 'layouts/news'
+    .title-header
+      h1.uk-card-title = text('home', 'news_last')
       a.course.course-more.news-more href=news_path
         span.course-more__text.uk-flex.uk-flex-middle
           strong = text('home', 'news_more')
           i.course-more__icon
             = fa_icon('arrow-right')
+    - unless @news.empty?
+      .news-grid
+        = render 'layouts/news'
     - else
       .empty
         span.empty = text('common', 'empty')

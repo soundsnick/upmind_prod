@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title = "#{@title+" | " if @title}Upmind"
+    title = "#{@title+" | " if @title} Sanabilim.kz"
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
@@ -9,14 +9,30 @@ html
     meta name="viewport" content="width=device-width, initial-scale=1"
   body
     application
+      .ent
+        .container
+          .ent__title = "ҰБТға қалды:"
+          div class="myCountdown" data-date="2020-06-20 0:0:0"
+            div
+              span class="counter-days"
+              = " күн"
+            div
+              span class="counter-hours"
+              = " сағат"
+            div
+              span class="counter-minutes"
+              = " минут"
+            div
+              span class="counter-seconds"
+              = " секунд"
       header.header
         .container
           .uk-flex.uk-flex-middle
             .logo-wrapper
               h1.logo
                 a href=root_path
-                  = "Up"
-                  b = "Mind"
+                  = "Sana"
+                  b = "Bilim"
                   = ".kz"
             .lang
               - not_set_languages.each do |lang|
@@ -62,7 +78,7 @@ html
         .container
           .uk-flex.uk-flex-middle
             .footer-logo--wrapper.uk-flex-1
-              h6.logo = "<b>&copy; 2019 Upmind.</b> #{text('footer', 'copyright')}".html_safe
+              h6.logo = "<b>&copy; 2019 Sanabilim.kz.</b> #{text('footer', 'copyright')}".html_safe
             .copyright--wrapper
               span.copyright
                 = "copyright by "
@@ -109,3 +125,7 @@ html
         e.preventDefault();
         $('.header__navigation').slideToggle();
     })
+
+    $(function () {
+        loopcounter('myCountdown');
+    });

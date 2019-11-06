@@ -3,13 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="2089535e-8ebb-4361-9aac-a8b7c5b4e2c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers/application_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/application_helper.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/lesson.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/lesson.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/courses/lesson.html.slim" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/courses/lesson.html.slim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/application.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/application.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/common.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/common.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/courses.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/courses.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/news.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/news.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/home/index.html.slim" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/index.html.slim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/hometasks/index.html.slim" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hometasks/index.html.slim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/_courses.html.slim" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/_courses.html.slim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.slim" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.slim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,6 +26,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/app/views/layouts/application.html.slim" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/app/controllers/multiple_controller.rb" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectConfigurationFiles">
@@ -52,7 +54,7 @@
     <property name="RailsGeneratorsPopup.hiddenIncluded" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sitecheck" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -208,7 +210,11 @@
       <workItem from="1567004825961" duration="24000" />
       <workItem from="1567809745005" duration="1768000" />
       <workItem from="1569508689468" duration="715000" />
-      <workItem from="1571999494132" duration="13096000" />
+      <workItem from="1571999494132" duration="14603000" />
+      <workItem from="1572177568849" duration="2507000" />
+      <workItem from="1572541776910" duration="167000" />
+      <workItem from="1572991934858" duration="7779000" />
+      <workItem from="1573041657370" duration="169000" />
     </task>
     <servers />
   </component>

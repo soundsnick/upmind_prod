@@ -18,12 +18,13 @@
                     = @task.rate.to_s
                     = fa_icon('star')
                 .uk-accordion-content
-                  a href=@task.file.url = @task.file.path.split("/").last
-                  - if @task.comment and @task.comment.length > 2
-                    p.faq__answer = @task.comment
-                  - elsif @task.comment.nil? and @task.rate.nil?
-                    br
-                    a href=hometask_path(lesson) = text('hometask', 'resend')
+                  - if @task.file
+                    a href=@task.file.url = @task.file.path.try(:split, "/").try(:last)
+                    - if @task.comment and @task.comment.length > 2
+                      p.faq__answer = @task.comment
+                    - elsif @task.comment.nil? and @task.rate.nil?
+                      br
+                      a href=hometask_path(lesson) = text('hometask', 'resend')
               - else
                 a href=hometask_path(lesson) = text('hometask', 'not_given')
           - if faq_category.lessons.empty?
