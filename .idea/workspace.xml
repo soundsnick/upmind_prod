@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2089535e-8ebb-4361-9aac-a8b7c5b4e2c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers/users_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/users_helper.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/courses/lesson.html.slim" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/courses/lesson.html.slim" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -208,7 +206,7 @@
       <workItem from="1572177568849" duration="2507000" />
       <workItem from="1572541776910" duration="167000" />
       <workItem from="1572990954575" duration="648000" />
-      <workItem from="1573309373829" duration="305000" />
+      <workItem from="1573309373829" duration="751000" />
     </task>
     <servers />
   </component>
