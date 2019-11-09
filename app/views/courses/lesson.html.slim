@@ -75,20 +75,21 @@
             = f.submit text('comment', 'comment_button'), class: 'uk-button uk-button-primary'
     - unless @lesson.comments.empty?
       - @lesson.comments.each do |comment|
-        .uk-margin
-          article class="uk-comment uk-comment-default uk-card uk-card-body uk-card-default commenting"
-            header[class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid]
-              div class="uk-width-auto"
-                div[uk-lightbox]
-                  a.profile__avatar.uk-comment-avatar.comment-avatar href=comment.user.avatar.url style="background-image: url(#{comment.user.avatar.url}); border: none"
-              .uk-width-expand.no-padding
-                h4.uk-comment-title.uk-margin-remove
-                  a.uk-link-reset.comment-name href="#" = comment.user.name_surname
-                ul.uk-comment-meta.uk-subnav.uk-subnav-divider.uk-margin-remove-top
-                  li
-                    a.published href="#" = comment.created_at.in_time_zone("Almaty").strftime("%d.%m.%Y %H:%M")
-            .uk-comment-body
-              p = comment.text
+        - if comment.user
+          .uk-margin
+            article class="uk-comment uk-comment-default uk-card uk-card-body uk-card-default commenting"
+              header[class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid]
+                div class="uk-width-auto"
+                  div[uk-lightbox]
+                    a.profile__avatar.uk-comment-avatar.comment-avatar href=avatar(comment.user) style="background-image: url(#{comment.user}); border: none"
+                .uk-width-expand.no-padding
+                  h4.uk-comment-title.uk-margin-remove
+                    a.uk-link-reset.comment-name href="#" = comment.user.name_surname
+                  ul.uk-comment-meta.uk-subnav.uk-subnav-divider.uk-margin-remove-top
+                    li
+                      a.published href="#" = comment.created_at.in_time_zone("Almaty").strftime("%d.%m.%Y %H:%M")
+              .uk-comment-body
+                p = comment.text
     - else
       .empty
         span.empty = text('common', 'empty')
